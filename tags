@@ -1,0 +1,156 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ABS	Config.h	68;"	d	line:68
+COMPLEX	Config.h	/^} COMPLEX;$/;"	t	line:50	typeref:struct:__anon1
+ClrBit	Config.h	77;"	d	line:77
+DECCHK	Config.h	60;"	d	line:60
+FP32	Config.h	/^typedef float                             FP32;$/;"	t	line:28
+FP64	Config.h	/^typedef double                            FP64;$/;"	t	line:29
+HEXCHK	Config.h	63;"	d	line:63
+INT16	Config.h	/^typedef int                               INT16;$/;"	t	line:24
+INT32	Config.h	/^typedef long                              INT32;$/;"	t	line:25
+INT8	Config.h	/^typedef char                              INT8;$/;"	t	line:26
+LEVEL_HIGH	Config.h	88;"	d	line:88
+LEVEL_LOW	Config.h	89;"	d	line:89
+Levinson_Durbin	ar_model.c	/^void Levinson_Durbin($/;"	f	line:30	signature:( TYPE_AR rx[], uint16_t n, uint16_t p, TYPE_AR a[], TYPE_AR_E *ep, uint8_t *err)
+Levinson_Durbin	ar_model.h	/^extern void Levinson_Durbin($/;"	p	line:24	signature:( TYPE_AR rx[], uint16_t n, uint16_t p, TYPE_AR a[], TYPE_AR_E *ep, uint8_t *err)
+MAX	Config.h	70;"	d	line:70
+MEM_B	Config.h	53;"	d	line:53
+MEM_W	Config.h	54;"	d	line:54
+MIN	Config.h	69;"	d	line:69
+N	test_mem_alloc.c	24;"	d	line:24	file:
+N_FFT	test_mem_alloc.c	26;"	d	line:26	file:
+ORDER	test_mem_alloc.c	25;"	d	line:25	file:
+OSAddr	mem_alloc.h	/^    void      *OSAddr;        \/* Pointer to the beginning address of the memory partition     *\/$/;"	m	line:27	struct:os_mem_data	access:public
+OSBlkSize	mem_alloc.h	/^    uint32_t  OSBlkSize;      \/* Size (in bytes) of each memory block                         *\/$/;"	m	line:29	struct:os_mem_data	access:public
+OSFreeList	mem_alloc.h	/^    void      *OSFreeList;    \/* Pointer to the beginning of the free list of memory blocks   *\/$/;"	m	line:28	struct:os_mem_data	access:public
+OSMemAddr	mem_alloc.h	/^    void     *OSMemAddr;      \/* Pointer to beginning of memory partition           *\/$/;"	m	line:19	struct:os_mem	access:public
+OSMemBlkSize	mem_alloc.h	/^    uint32_t OSMemBlkSize;    \/* Size (in bytes) of each block of memory            *\/$/;"	m	line:21	struct:os_mem	access:public
+OSMemCreate	mem_alloc.c	/^OS_MEM  *OSMemCreate (void     *addr,$/;"	f	line:39	signature:(void *addr, uint32_t nblks, uint32_t blksize, uint8_t *perr)
+OSMemCreate	mem_alloc.h	/^extern OS_MEM  *OSMemCreate (void     *addr,$/;"	p	line:53	signature:(void *addr, uint32_t nblks, uint32_t blksize, uint8_t *perr)
+OSMemFreeList	mem_alloc.c	/^OS_MEM  *OSMemFreeList;            \/* Pointer to free list of memory partitions       *\/$/;"	v	line:12
+OSMemFreeList	mem_alloc.h	/^    void     *OSMemFreeList;  \/* Pointer to list of free memory blocks              *\/$/;"	m	line:20	struct:os_mem	access:public
+OSMemGet	mem_alloc.c	/^void  *OSMemGet (OS_MEM  *pmem,$/;"	f	line:113	signature:(OS_MEM *pmem, uint8_t *perr)
+OSMemGet	mem_alloc.h	/^extern void  *OSMemGet (OS_MEM  *pmem,$/;"	p	line:58	signature:(OS_MEM *pmem, uint8_t *perr)
+OSMemNBlks	mem_alloc.h	/^    uint32_t OSMemNBlks;      \/* Total number of blocks in this partition           *\/$/;"	m	line:22	struct:os_mem	access:public
+OSMemNFree	mem_alloc.h	/^    uint32_t OSMemNFree;      \/* Number of memory blocks remaining in this partition*\/$/;"	m	line:23	struct:os_mem	access:public
+OSMemPut	mem_alloc.c	/^uint8_t  OSMemPut (OS_MEM  *pmem,$/;"	f	line:151	signature:(OS_MEM *pmem, void *pblk)
+OSMemPut	mem_alloc.h	/^extern uint8_t  OSMemPut (OS_MEM  *pmem,$/;"	p	line:61	signature:(OS_MEM *pmem, void *pblk)
+OSMemQuery	mem_alloc.c	/^uint8_t  OSMemQuery (OS_MEM       *pmem,$/;"	f	line:189	signature:(OS_MEM *pmem, OS_MEM_DATA *p_mem_data)
+OSMemQuery	mem_alloc.h	/^extern uint8_t  OSMemQuery (OS_MEM       *pmem,$/;"	p	line:64	signature:(OS_MEM *pmem, OS_MEM_DATA *p_mem_data)
+OSMemTbl	mem_alloc.c	/^OS_MEM  OSMemTbl[OS_MAX_MEM_PART]; \/* Storage for memory partition manager            *\/$/;"	v	line:13
+OSNBlks	mem_alloc.h	/^    uint32_t  OSNBlks;        \/* Total number of blocks in the partition                      *\/$/;"	m	line:30	struct:os_mem_data	access:public
+OSNFree	mem_alloc.h	/^    uint32_t  OSNFree;        \/* Number of memory blocks free                                 *\/$/;"	m	line:31	struct:os_mem_data	access:public
+OSNUsed	mem_alloc.h	/^    uint32_t  OSNUsed;        \/* Number of memory blocks used                                 *\/$/;"	m	line:32	struct:os_mem_data	access:public
+OS_ERR_MEM_FULL	mem_alloc.h	44;"	d	line:44
+OS_ERR_MEM_INVALID_ADDR	mem_alloc.h	48;"	d	line:48
+OS_ERR_MEM_INVALID_BLKS	mem_alloc.h	41;"	d	line:41
+OS_ERR_MEM_INVALID_PART	mem_alloc.h	40;"	d	line:40
+OS_ERR_MEM_INVALID_PBLK	mem_alloc.h	45;"	d	line:45
+OS_ERR_MEM_INVALID_PDATA	mem_alloc.h	47;"	d	line:47
+OS_ERR_MEM_INVALID_PMEM	mem_alloc.h	46;"	d	line:46
+OS_ERR_MEM_INVALID_SIZE	mem_alloc.h	42;"	d	line:42
+OS_ERR_MEM_NAME_TOO_LONG	mem_alloc.h	49;"	d	line:49
+OS_ERR_MEM_NO_FREE_BLKS	mem_alloc.h	43;"	d	line:43
+OS_ERR_NONE	mem_alloc.h	39;"	d	line:39
+OS_MAX_MEM_PART	mem_alloc.h	36;"	d	line:36
+OS_MEM	mem_alloc.h	/^} OS_MEM;$/;"	t	line:24	typeref:struct:os_mem
+OS_MEM_DATA	mem_alloc.h	/^} OS_MEM_DATA;$/;"	t	line:33	typeref:struct:os_mem_data
+OS_MemClr	mem_alloc.c	/^void  OS_MemClr (uint8_t  *pdest,$/;"	f	line:251	signature:(uint8_t *pdest, uint16_t size)
+OS_MemClr	mem_alloc.h	/^extern void  OS_MemClr (uint8_t  *pdest,$/;"	p	line:69	signature:(uint8_t *pdest, uint16_t size)
+OS_MemCopy	mem_alloc.c	/^void  OS_MemCopy (uint8_t  *pdest,$/;"	f	line:269	signature:(uint8_t *pdest, uint8_t *psrc, uint16_t size)
+OS_MemCopy	mem_alloc.h	/^extern void  OS_MemCopy (uint8_t  *pdest,$/;"	p	line:72	signature:(uint8_t *pdest, uint8_t *psrc, uint16_t size)
+OS_MemInit	mem_alloc.c	/^void  OS_MemInit (void)$/;"	f	line:219	signature:(void)
+OS_MemInit	mem_alloc.h	/^extern void  OS_MemInit (void);$/;"	p	line:67	signature:(void)
+PI	Config.h	73;"	d	line:73
+PI	zx_fft.h	16;"	d	line:16
+SRC	Makefile	/^SRC=$(wildcard *.c)$/;"	m	line:3
+SetBit	Config.h	81;"	d	line:81
+TARGET	Makefile	/^TARGET=test_mem_alloc$/;"	m	line:2
+TYPE_AR	ar_model.h	/^typedef COMPLEX TYPE_AR;$/;"	t	line:21
+TYPE_AR_E	ar_model.h	/^typedef float   TYPE_AR_E;$/;"	t	line:20
+TYPE_CORREL	zx_xcorrel.h	/^typedef COMPLEX TYPE_CORREL;$/;"	t	line:19
+TYPE_CORREL_E	zx_xcorrel.h	/^typedef float TYPE_CORREL_E;    $/;"	t	line:17
+TYPE_FFT	zx_fft.h	/^typedef COMPLEX TYPE_FFT;  \/* Define COMPLEX in Config.h *\/$/;"	t	line:19
+TYPE_FFT_E	zx_fft.h	13;"	d	line:13
+TYPE_MAX	zx_math.h	/^typedef float TYPE_MAX;$/;"	t	line:19
+TYPE_SCALE	zx_math.h	/^typedef float TYPE_SCALE;$/;"	t	line:18
+UINT16	Config.h	/^typedef unsigned int                      UINT16;$/;"	t	line:21
+UINT32	Config.h	/^typedef unsigned long                     UINT32;$/;"	t	line:22
+UINT8	Config.h	/^typedef unsigned char                     UINT8;$/;"	t	line:23
+UPCASE	Config.h	56;"	d	line:56
+USE_FULL_ASSERT	Config.h	93;"	d	line:93
+ZX_FAILURE	Config.h	86;"	d	line:86
+ZX_SUCCESS	Config.h	85;"	d	line:85
+_AR_MODEL_H	ar_model.h	12;"	d	line:12
+_CONFIG_H	Config.h	10;"	d	line:10
+_GLOBAL_H	Global.h	10;"	d	line:10
+_MEM_ALLOC_H	mem_alloc.h	11;"	d	line:11
+_TESTCASE_H	testcase.h	2;"	d	line:2
+_TEST_MEM_ALLOC_H	test_mem_alloc.h	12;"	d	line:12
+_ZX_FFT_H	zx_fft.h	9;"	d	line:9
+_ZX_MATH_H	zx_math.h	9;"	d	line:9
+_ZX_XCORREL_H	zx_xcorrel.h	9;"	d	line:9
+__anon1::imag	Config.h	/^	float imag;$/;"	m	line:49	struct:__anon1	access:public
+__anon1::real	Config.h	/^    float real;$/;"	m	line:48	struct:__anon1	access:public
+a	test_mem_alloc.c	/^COMPLEX a[ORDER]; $/;"	v	line:28
+adjust_xcorrel_output	zx_xcorrel.c	/^static inline void adjust_xcorrel_output(COMPLEX x[], uint32_t n)$/;"	f	line:13	file:	signature:(COMPLEX x[], uint32_t n)
+ar_psd	ar_model.c	/^void ar_psd(TYPE_AR a[], uint16_t p, TYPE_AR_E *ep, float psd[], uint16_t n)$/;"	f	line:105	signature:(TYPE_AR a[], uint16_t p, TYPE_AR_E *ep, float psd[], uint16_t n)
+ar_psd	ar_model.h	/^extern void ar_psd($/;"	p	line:34	signature:( TYPE_AR a[], uint16_t p, TYPE_AR_E *ep, float psd[], uint16_t n)
+assert_failed	Config.h	/^  extern void assert_failed(uint8_t* file, uint32_t line);$/;"	p	line:104	signature:(uint8_t* file, uint32_t line)
+assert_param	Config.h	103;"	d	line:103
+assert_param	Config.h	106;"	d	line:106
+cabs	zx_math.c	/^float cabs(COMPLEX x)$/;"	f	line:81	signature:(COMPLEX x)
+cabs	zx_math.h	/^extern float cabs(COMPLEX x);$/;"	p	line:29	signature:(COMPLEX x)
+cos_tb	zx_fft.c	/^const float cos_tb[] = {  \/\/ Accuracy (PI PI\/2 PI\/4 PI\/8 PI\/16 ... PI\/(2^k))$/;"	v	line:26
+dsp_max_min_val	zx_math.c	/^void dsp_max_min_val(const TYPE_MAX* x, int nx, TYPE_MAX *max, TYPE_MAX *min)$/;"	f	line:14	signature:(const TYPE_MAX* x, int nx, TYPE_MAX *max, TYPE_MAX *min)
+dsp_max_min_val	zx_math.h	/^extern void dsp_max_min_val(const TYPE_MAX* x, int nx, TYPE_MAX *max, TYPE_MAX *min);$/;"	p	line:22	signature:(const TYPE_MAX* x, int nx, TYPE_MAX *max, TYPE_MAX *min)
+err	test_mem_alloc.c	/^uint8_t err;$/;"	v	line:21
+fft	zx_fft.c	/^int fft(TYPE_FFT *x, uint32_t N)$/;"	f	line:42	signature:(TYPE_FFT *x, uint32_t N)
+fft	zx_fft.h	/^extern int fft(TYPE_FFT *x, uint32_t N);$/;"	p	line:21	signature:(TYPE_FFT *x, uint32_t N)
+fft_real	zx_fft.c	/^int fft_real(TYPE_FFT *x, uint32_t N)$/;"	f	line:116	signature:(TYPE_FFT *x, uint32_t N)
+fft_real	zx_fft.h	/^extern int fft_real(TYPE_FFT *x, uint32_t N);$/;"	p	line:22	signature:(TYPE_FFT *x, uint32_t N)
+floor_log2_32	zx_math.c	/^uint32_t floor_log2_32(uint32_t x)$/;"	f	line:99	signature:(uint32_t x)
+floor_log2_32	zx_math.h	/^extern uint32_t floor_log2_32(uint32_t x);$/;"	p	line:31	signature:(uint32_t x)
+g_mem_part0	test_mem_alloc.c	/^OS_MEM *g_mem_part0;$/;"	v	line:19
+get_signal_delay	zx_xcorrel.c	/^float get_signal_delay(TYPE_CORREL x[], TYPE_CORREL y[], int n, uint32_t freq)$/;"	f	line:114	signature:(TYPE_CORREL x[], TYPE_CORREL y[], int n, uint32_t freq)
+get_signal_delay	zx_xcorrel.h	/^extern float get_signal_delay(TYPE_CORREL x[], TYPE_CORREL y[], int n, uint32_t freq);$/;"	p	line:22	signature:(TYPE_CORREL x[], TYPE_CORREL y[], int n, uint32_t freq)
+guass_rand	test_mem_alloc.c	/^double guass_rand(void)  $/;"	f	line:34	signature:(void)
+ifft	zx_fft.c	/^int ifft(TYPE_FFT *x, uint32_t N)$/;"	f	line:191	signature:(TYPE_FFT *x, uint32_t N)
+ifft	zx_fft.h	/^extern int ifft(TYPE_FFT *x, uint32_t N);$/;"	p	line:23	signature:(TYPE_FFT *x, uint32_t N)
+ifft_real	zx_fft.c	/^int ifft_real(TYPE_FFT *x, uint32_t N)$/;"	f	line:218	signature:(TYPE_FFT *x, uint32_t N)
+ifft_real	zx_fft.h	/^extern int ifft_real(TYPE_FFT *x, uint32_t N);$/;"	p	line:24	signature:(TYPE_FFT *x, uint32_t N)
+imag	Config.h	/^	float imag;$/;"	m	line:49	struct:__anon1	access:public
+main	test_mem_alloc.c	/^int main(void)$/;"	f	line:60	signature:(void)
+ones_32	zx_math.c	/^int ones_32(uint32_t n)$/;"	f	line:70	signature:(uint32_t n)
+ones_32	zx_math.h	/^extern int ones_32(uint32_t n);  $/;"	p	line:30	signature:(uint32_t n)
+os_mem	mem_alloc.h	/^typedef struct os_mem {       \/* MEMORY CONTROL BLOCK                               *\/$/;"	s	line:18
+os_mem::OSMemAddr	mem_alloc.h	/^    void     *OSMemAddr;      \/* Pointer to beginning of memory partition           *\/$/;"	m	line:19	struct:os_mem	access:public
+os_mem::OSMemBlkSize	mem_alloc.h	/^    uint32_t OSMemBlkSize;    \/* Size (in bytes) of each block of memory            *\/$/;"	m	line:21	struct:os_mem	access:public
+os_mem::OSMemFreeList	mem_alloc.h	/^    void     *OSMemFreeList;  \/* Pointer to list of free memory blocks              *\/$/;"	m	line:20	struct:os_mem	access:public
+os_mem::OSMemNBlks	mem_alloc.h	/^    uint32_t OSMemNBlks;      \/* Total number of blocks in this partition           *\/$/;"	m	line:22	struct:os_mem	access:public
+os_mem::OSMemNFree	mem_alloc.h	/^    uint32_t OSMemNFree;      \/* Number of memory blocks remaining in this partition*\/$/;"	m	line:23	struct:os_mem	access:public
+os_mem_data	mem_alloc.h	/^typedef struct os_mem_data {$/;"	s	line:26
+os_mem_data::OSAddr	mem_alloc.h	/^    void      *OSAddr;        \/* Pointer to the beginning address of the memory partition     *\/$/;"	m	line:27	struct:os_mem_data	access:public
+os_mem_data::OSBlkSize	mem_alloc.h	/^    uint32_t  OSBlkSize;      \/* Size (in bytes) of each memory block                         *\/$/;"	m	line:29	struct:os_mem_data	access:public
+os_mem_data::OSFreeList	mem_alloc.h	/^    void      *OSFreeList;    \/* Pointer to the beginning of the free list of memory blocks   *\/$/;"	m	line:28	struct:os_mem_data	access:public
+os_mem_data::OSNBlks	mem_alloc.h	/^    uint32_t  OSNBlks;        \/* Total number of blocks in the partition                      *\/$/;"	m	line:30	struct:os_mem_data	access:public
+os_mem_data::OSNFree	mem_alloc.h	/^    uint32_t  OSNFree;        \/* Number of memory blocks free                                 *\/$/;"	m	line:31	struct:os_mem_data	access:public
+os_mem_data::OSNUsed	mem_alloc.h	/^    uint32_t  OSNUsed;        \/* Number of memory blocks used                                 *\/$/;"	m	line:32	struct:os_mem_data	access:public
+partition0	test_mem_alloc.c	/^uint8_t partition0[8][8192];$/;"	v	line:20
+pblk	test_mem_alloc.c	/^uint8_t *pblk;$/;"	v	line:22
+psd	test_mem_alloc.c	/^float psd[N_FFT];$/;"	v	line:29
+pyulear	ar_model.c	/^void pyulear(TYPE_AR x[], int n_x, int p, int n_fft, float psd[]) $/;"	f	line:146	signature:(TYPE_AR x[], int n_x, int p, int n_fft, float psd[])
+pyulear	ar_model.h	/^extern void pyulear(TYPE_AR x[], int n_x, int p, int n_fft, float psd[]); $/;"	p	line:41	signature:(TYPE_AR x[], int n_x, int p, int n_fft, float psd[])
+real	Config.h	/^    float real;$/;"	m	line:48	struct:__anon1	access:public
+scale	zx_math.c	/^void scale(TYPE_SCALE x[], $/;"	f	line:48	signature:(TYPE_SCALE x[], int32_t n, TYPE_SCALE xmax, TYPE_SCALE xmin, TYPE_SCALE s_low, TYPE_SCALE s_high)
+scale	zx_math.h	/^extern void scale(TYPE_SCALE x[], $/;"	p	line:23	signature:(TYPE_SCALE x[], int32_t n, TYPE_SCALE xmax, TYPE_SCALE xmin, TYPE_SCALE s_low, TYPE_SCALE s_high)
+sin_tb	zx_fft.c	/^const float sin_tb[] = {  \/\/ Accuracy (PI PI\/2 PI\/4 PI\/8 PI\/16 ... PI\/(2^k))$/;"	v	line:18
+testcase	testcase.h	/^float testcase[] = {$/;"	v	line:4
+x	test_mem_alloc.c	/^COMPLEX x[N*2];  $/;"	v	line:27
+zx_xcorrel	zx_xcorrel.c	/^void zx_xcorrel(TYPE_CORREL x[], TYPE_CORREL y[], int m, int n, int icorrel)$/;"	f	line:41	signature:(TYPE_CORREL x[], TYPE_CORREL y[], int m, int n, int icorrel)
+zx_xcorrel	zx_xcorrel.h	/^extern void zx_xcorrel(TYPE_CORREL x[], TYPE_CORREL y[], int n, int lag, int icorrel);$/;"	p	line:21	signature:(TYPE_CORREL x[], TYPE_CORREL y[], int n, int lag, int icorrel)
