@@ -1,4 +1,4 @@
-# SRC=test_mem_alloc.c mem_alloc.c mem_alloc.h Config.h
+# SRC=test_mem_alloc.c mem_alloc.c mem_alloc.h Config.h tiny_mm.c tiny_mm.h
 TARGET=test_mem_alloc
 SRC=$(wildcard *.c)
 

@@ -28,10 +28,8 @@ for i = Sn:Sn+N-1
         fprintf(fid,'\n');
     end
 end
-fprintf(fid,'%.4f', testcase(N,1));
+% fprintf(fid,'%.4f', testcase(N,1));
 fprintf(fid,'\n};\n');
 fprintf(fid,'\n#endif\n');
 
 fclose(fid);
-
-plot(testcase(1:N,1));

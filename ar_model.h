@@ -15,13 +15,13 @@
 extern "C" {
 #endif
 
-#include "Global.h"  
+#include "Config.h"  
 
 typedef float   TYPE_AR_E;
 typedef COMPLEX TYPE_AR;
 
 /* Extern Functions */
-extern void Levinson_Durbin(
+extern uint16_t Levinson_Durbin(
         // Inputs
         TYPE_AR rx[],
         uint16_t n,
@@ -38,7 +38,8 @@ extern void ar_psd(
         float psd[], 
         uint16_t n);
 
-extern void pyulear(TYPE_AR x[], int n_x, int p, int n_fft, float psd[]); 
+extern void pyulear_corr(TYPE_AR x_corr[], int n_x, int p, int n_fft, float psd[]);
+extern void pyulear(COMPLEX x[], int n_x, int p, int n_fft, float psd[]);
 
 #ifdef __cplusplus
 }

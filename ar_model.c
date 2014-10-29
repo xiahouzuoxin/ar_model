@@ -9,6 +9,8 @@
  */
  
 #include "ar_model.h"
+#include "tiny_mm.h"
+#include "zx_fft.h"
 
 /*
  * @brief   
@@ -27,7 +29,7 @@
  * @test log
  * 2014.06.24 Test for real rx[] input ok.
  */
-void Levinson_Durbin(
+uint16_t Levinson_Durbin(
         // Inputs
         TYPE_AR rx[],
         uint16_t n,
@@ -38,7 +40,7 @@ void Levinson_Durbin(
         uint8_t *err)
 {
     float rx0 = 0.0f;
-    float tmp_a = 0.0f;
+    float tmp_ep = 0.0f;
     int16_t i = 0;
     int16_t k = 0;
     TYPE_AR sum;
@@ -52,7 +54,13 @@ void Levinson_Durbin(
     *ep = rx0 * (1.0f - (a[1].real*a[1].real+a[1].imag*a[1].imag) );   
 
     /* block size of g_mem_part0 should be big enough */
-    p_part0 = (COMPLEX *)OSMemGet(g_mem_part0, err);
+    //p_part0 = (COMPLEX *)OSMemGet(g_mem_part0, err);
+    
+    p_part0 = (COMPLEX *)get_recg_buf(&recg_buf, p*sizeof(COMPLEX));
+    if (!p_part0) {
+        printf("ar_psd error.\n");
+        return k;
+    }
 
     for (k=2; k<p; k++) {
         sum.real = 0.0f;
@@ -67,9 +75,16 @@ void Levinson_Durbin(
         a[k].real = -sum.real/(*ep);
         a[k].imag = -sum.imag/(*ep);
         // Next *ep
-        (*ep) *= (1.0f - (a[k].real*a[k].real+a[k].imag*a[k].imag) );
-        if (*ep<=0.0f) 
-            return;
+		tmp_ep = 1.0f - (a[k].real*a[k].real+a[k].imag*a[k].imag);
+		if (tmp_ep <= 0.0f) {
+            return k;
+		} else {
+            (*ep) *= tmp_ep;
+		}
+        //(*ep) *= (1.0f - (a[k].real*a[k].real+a[k].imag*a[k].imag) );
+        //if (*ep<=0.0f) {
+        //    return k;
+		//}
         // Recalculate a[1] ~ a[k-1], will 
         for (i=1; i<k; i++) {
             p_part0[i].real = a[i].real + a[k].real*a[k-i].real + a[k].imag*a[k-i].imag;
@@ -81,9 +96,12 @@ void Levinson_Durbin(
         }
     }
 
-    OSMemPut(g_mem_part0, p_part0);
+    //OSMemPut(g_mem_part0, p_part0);
+    put_recg_buf(&recg_buf, p*sizeof(COMPLEX));
 
     *err = 0;
+
+	return k;
 }
 
 
@@ -107,10 +125,15 @@ void ar_psd(TYPE_AR a[], uint16_t p, TYPE_AR_E *ep, float psd[], uint16_t n)
     COMPLEX *p_part0 = NULL;
     int k = 0;
     float power = 0;
-    uint8_t err = 0;
+//    uint8_t err = 0;
 
     /* block size of g_mem_part0 should be big enough */
-    p_part0 = OSMemGet(g_mem_part0, &err);
+    //p_part0 = OSMemGet(g_mem_part0, &err);
+    p_part0 = (COMPLEX *)get_recg_buf(&recg_buf, p*sizeof(COMPLEX));
+    if (!p_part0) {
+        printf("ar_psd error.\n");
+        return;
+    }
 
     for (k=0; k<p; k++) {
         p_part0[k].real = a[k].real;
@@ -128,34 +151,87 @@ void ar_psd(TYPE_AR a[], uint16_t p, TYPE_AR_E *ep, float psd[], uint16_t n)
         psd[k]= (*ep) / power; 
     }
 
-    OSMemPut(g_mem_part0, p_part0);
+    //OSMemPut(g_mem_part0, p_part0);
+    put_recg_buf(&recg_buf, p*sizeof(COMPLEX));
 }
 
 /*
  * @brief   
- *   Function same as pyulear in Matlab.
  * @inputs  
- *   x[]   Input signal
- *   n_x   Size of input signal
- *   p     AR model coeff order (integer)
- *   n_fft Specifies the FFT length used to calculate the PSD estimates
  * @outputs 
- *   psd[] PSD estimates output
  * @retval  
  */
-void pyulear(TYPE_AR x[], int n_x, int p, int n_fft, float psd[]) 
+void pyulear_corr(TYPE_AR x_corr[], int n_x, int p, int n_fft, float psd[])
 {
-    float ep  = 0;
+    float ep = 0;
     uint8_t err = 0;
     TYPE_AR *a_coeff = NULL;
 
-    /* block size of g_mem_part0 should be big enough */
-    a_coeff = OSMemGet(g_mem_part0, &err);
-
-    zx_xcorrel(x, x, n_x, n_x*2, 0);
-    Levinson_Durbin(x, n_x, p, a_coeff, &ep, &err); 
+    /* block size of g_mem_part0 should big enough */
+    // a_coeff = OSMemGet(g_mem_part0, &err);
+    a_coeff = (TYPE_AR *)get_recg_buf(&recg_buf, p*sizeof(TYPE_AR));
+    if (!a_coeff) {
+        printf("alloc a_coeff error.\n");
+        return;
+    }
+    Levinson_Durbin(x_corr, n_x, p, a_coeff, &ep, &err); 
     ar_psd(a_coeff, p, &ep, psd, n_fft);
 
-    OSMemPut(g_mem_part0, a_coeff);
+    // OSMemPut(g_mem_part0, a_coeff);
+    put_recg_buf(&recg_buf, p*sizeof(TYPE_AR));
+}
+
+/*
+ * @brief   
+ * @inputs  
+ * @outputs 
+ * @retval  
+ */
+void pyulear(COMPLEX x[], int n_x, int p, int n_fft, float psd[])
+{
+    float ep = 0;
+    uint8_t err = 0;
+    TYPE_AR *a_coeff = NULL;
+	int  i = 0;
+	uint16_t k = 0; 
+
+#if 0
+	FILE *fp = NULL;
+
+	fp = fopen("fft.txt", "w+");
+	if (!fp) {
+	    printf("open fft.txt error.\n");
+		return;
+	}
+#endif 
+    /* auto-correaltion */
+    fft_real(x, n_x);	
+    for (i=0; i<n_x; i++) {
+        x[i].real = x[i].real * x[i].real + x[i].imag * x[i].imag;
+        x[i].imag = 0;
+    }
+    ifft_real(x, n_x);
+    
+	//zx_xcorrel(x, x, n_x, n_x*2, 0);
+#if 0
+	for (i=0; i<n_x; i++) {
+	    fprintf(fp, "%.4f\n", x[i].real);
+	}
+	fclose(fp);
+#endif
+
+    a_coeff = (TYPE_AR *)get_recg_buf(&recg_buf, p*sizeof(TYPE_AR));
+    if (!a_coeff) {
+        printf("alloc a_coeff error.\n");
+        return;
+    }
+    k = Levinson_Durbin(x, n_x, p, a_coeff, &ep, &err); 
+	for (; k<p; k++) {
+        a_coeff[k].real = 0.0f;
+		a_coeff[k].imag = 0.0f;
+	}
+    ar_psd(a_coeff, p, &ep, psd, n_fft);
+
+    put_recg_buf(&recg_buf, p*sizeof(TYPE_AR));
 }
 
